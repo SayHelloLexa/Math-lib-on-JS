@@ -9,119 +9,119 @@ const Vector3f = require('../math/vector3f.js');
 const Vector4f = require('../math/vector4f.js');
 
 test('testVector2fPlus', () => {
-    const vector1 = new Vector2f(-10, 2);
-    const vector2 = new Vector2f(4, -50);
+    const vector1 = new Vector2f(-5, 7);
+    const vector2 = new Vector2f(3, -15);
     const result = LinearMath.vectorPlus(vector1, vector2);
-    const expectedResult = new Vector2f(-6, -48);
+    const expectedResult = new Vector2f(-2, -8);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector3fPlus', () => {
-    const vector1 = new Vector3f(10, 2, 8);
-    const vector2 = new Vector3f(4, -50, -8);
+    const vector1 = new Vector3f(5, 7, 3);
+    const vector2 = new Vector3f(2, -15, -3);
     const result = LinearMath.vectorPlus(vector1, vector2);
-    const expectedResult = new Vector3f(14, -48, 0);
+    const expectedResult = new Vector3f(7, -8, 0);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector4fPlus', () => {
-    const vector1 = new Vector4f(11.11, 12.12, 13.222, 1);
-    const vector2 = new Vector4f(12.11, -10.01, -8, -2.1);
+    const vector1 = new Vector4f(5.5, 7.7, 3.3, 1);
+    const vector2 = new Vector4f(2.2, -15.5, -3.3, -1.1);
     const result = LinearMath.vectorPlus(vector1, vector2);
-    const expectedResult = new Vector4f(23.22, 2.11, 5.222, -1.1);
+    const expectedResult = new Vector4f(7.7, -7.8, 0, -0.1);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVectorPlusException', () => {
-    const vector1 = new Vector2f(10, 2);
-    const vector2 = new Vector3f(4, -50, -8);
+    const vector1 = new Vector2f(5, 7);
+    const vector2 = new Vector3f(2, -15, -3);
     expect(() => {
         LinearMath.vectorPlus(vector1, vector2);
     }).toThrow(new LinearMathException("Error in the Math library with error: Vectors of different spaces"));
 });
 
 test('testVector2fMinus', () => {
-    const vector1 = new Vector2f(-10, 2);
-    const vector2 = new Vector2f(4, -50);
+    const vector1 = new Vector2f(-5, 7);
+    const vector2 = new Vector2f(3, -15);
     const result = LinearMath.vectorMinus(vector1, vector2);
-    const expectedResult = new Vector2f(-14, 52);
+    const expectedResult = new Vector2f(-8, 22);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector3fMinus', () => {
-    const vector1 = new Vector3f(10, 2, 8);
-    const vector2 = new Vector3f(4, -50, -8);
+    const vector1 = new Vector3f(5, 7, 3);
+    const vector2 = new Vector3f(2, -15, -3);
     const result = LinearMath.vectorMinus(vector1, vector2);
-    const expectedResult = new Vector3f(6, 52, 16);
+    const expectedResult = new Vector3f(3, 22, 6);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector4fMinus', () => {
-    const vector1 = new Vector4f(11.11, 12.12, 13.222, 1);
-    const vector2 = new Vector4f(12.11, -10.01, -8, -2.1);
+    const vector1 = new Vector4f(5.5, 7.7, 3.3, 1);
+    const vector2 = new Vector4f(2.2, -15.5, -3.3, -1.1);
     const result = LinearMath.vectorMinus(vector1, vector2);
-    const expectedResult = new Vector4f(-1, 22.13, 21.222, 3.1);
+    const expectedResult = new Vector4f(3.3, 23.2, 6.6, 2.1);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVectorMinusException', () => {
-    const vector1 = new Vector2f(10, 2);
-    const vector2 = new Vector3f(4, -50, -8);
+    const vector1 = new Vector2f(5, 7);
+    const vector2 = new Vector3f(2, -15, -3);
     expect(() => {
         LinearMath.vectorMinus(vector1, vector2);
     }).toThrow(new LinearMathException("Error in the Math library with error: Vectors of different spaces"));
 });
 
 test('testVector2fMultiplication', () => {
-    const vector1 = new Vector2f(-10, 2);
-    const val = 2.5;
+    const vector1 = new Vector2f(-5, 7);
+    const val = 3.5;
     const result = LinearMath.vectorMultiplication(vector1, val);
-    const expectedResult = new Vector2f(-25, 5);
+    const expectedResult = new Vector2f(-17.5, 24.5);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector3fMultiplication', () => {
-    const vector1 = new Vector3f(-10, 2, -19);
-    const val = 0;
+    const vector1 = new Vector3f(-5, 7, -19);
+    const val = 2;
     const result = LinearMath.vectorMultiplication(vector1, val);
-    const expectedResult = new Vector3f(0, 0, 0);
+    const expectedResult = new Vector3f(-10, 14, -38);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector4fMultiplication', () => {
-    const vector1 = new Vector4f(-10, 2, -19, 20);
-    const val = 3;
+    const vector1 = new Vector4f(-5, 7, -19, 20);
+    const val = 4;
     const result = LinearMath.vectorMultiplication(vector1, val);
-    const expectedResult = new Vector4f(-30, 6, -57, 60);
+    const expectedResult = new Vector4f(-20, 28, -76, 80);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector2fDivision', () => {
-    const vector1 = new Vector2f(-10, 2);
+    const vector1 = new Vector2f(-5, 7);
     const val = 2;
     const result = LinearMath.vectorDivision(vector1, val);
-    const expectedResult = new Vector2f(-5, 1);
+    const expectedResult = new Vector2f(-2.5, 3.5);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector3fDivision', () => {
-    const vector1 = new Vector3f(-10, 2, -19);
-    const val = 0.5;
+    const vector1 = new Vector3f(-5, 7, -19);
+    const val = 2;
     const result = LinearMath.vectorDivision(vector1, val);
-    const expectedResult = new Vector3f(-20, 4, -38);
+    const expectedResult = new Vector3f(-2.5, 3.5, -9.5);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector4fDivision', () => {
-    const vector1 = new Vector4f(-10, 2, -19, 20);
-    const val = -5;
+    const vector1 = new Vector4f(-5, 7, -19, 20);
+    const val = 4;
     const result = LinearMath.vectorDivision(vector1, val);
-    const expectedResult = new Vector4f(2, -0.4, 3.8, -4);
+    const expectedResult = new Vector4f(-1.25, 1.75, -4.75, 5);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVectorDivisionException', () => {
-    const vector1 = new Vector2f(10, 2);
+    const vector1 = new Vector2f(5, 7);
     const val = 0;
     expect(() => {
         LinearMath.vectorDivision(vector1, val);
@@ -130,85 +130,85 @@ test('testVectorDivisionException', () => {
 
 test('testVector2fGetLength', () => {
     const scale = Math.pow(10, 3);
-    const vector1 = new Vector2f(10, 3);
+    const vector1 = new Vector2f(5, 7);
     const result = LinearMath.getLength(vector1);
-    const expectedResult = 10.440306508910;
+    const expectedResult = 8.60232526704;
     expect(Math.ceil(expectedResult * scale) / scale).toBe(Math.ceil(result * scale) / scale);
 });
 
 test('testVector3fGetLength', () => {
     const scale = Math.pow(10, 3);
-    const vector1 = new Vector3f(4, 2, 2);
+    const vector1 = new Vector3f(2, 3, 6);
     const result = LinearMath.getLength(vector1);
-    const expectedResult = 4.89897948556;
+    const expectedResult = 7.0;
     expect(Math.ceil(expectedResult * scale) / scale).toBe(Math.ceil(result * scale) / scale);
 });
 
 test('testVector4fGetLength', () => {
     const scale = Math.pow(10, 3);
-    const vector1 = new Vector4f(4, 2, 2, 19);
+    const vector1 = new Vector4f(2, 3, 6, 1);
     const result = LinearMath.getLength(vector1);
-    const expectedResult = 19.62141687034;
+    const expectedResult = 7.21110255093;
     expect(Math.ceil(expectedResult * scale) / scale).toBe(Math.ceil(result * scale) / scale);
 });
 
 test('testVector2fNormalization', () => {
-    const vector1 = new Vector2f(4, 2);
+    const vector1 = new Vector2f(2, 3);
     const result = LinearMath.vectorNormalization(vector1);
-    const expectedResult = new Vector2f(0.89442718, 0.44721359);
+    const expectedResult = new Vector2f(0.554700196225, 0.832050294338);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector3fNormalization', () => {
-    const vector1 = new Vector3f(-5, 2, 7);
+    const vector1 = new Vector3f(2, 3, 6);
     const result = LinearMath.vectorNormalization(vector1);
-    const expectedResult = new Vector3f(-0.56613857, 0.22645542, 0.79259396);
+    const expectedResult = new Vector3f(0.285714285714, 0.428571428571, 0.857142857143);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
 test('testVector4fNormalization', () => {
-    const vector1 = new Vector4f(-5, 2, 7, 9);
+    const vector1 = new Vector4f(2, 3, 6, 1);
     const result = LinearMath.vectorNormalization(vector1);
     expect(Math.abs(1 - LinearMath.getLength(result)) < 1e-7).toBe(true);
 });
 
 test('testVector2fScalarProduct', () => {
-    const vector1 = new Vector2f(-10, 2);
-    const vector2 = new Vector2f(4, -50);
+    const vector1 = new Vector2f(-5, 7);
+    const vector2 = new Vector2f(3, -15);
     const result = LinearMath.vectorScalarProduct(vector1, vector2);
-    const expectedResult = -140;
+    const expectedResult = 110;
     expect(result).toBe(expectedResult);
 });
 
 test('testVector3fScalarProduct', () => {
-    const vector1 = new Vector3f(10, 2, 8);
-    const vector2 = new Vector3f(4, -50, -8);
+    const vector1 = new Vector3f(5, 7, 3);
+    const vector2 = new Vector3f(2, -15, -3);
     const result = LinearMath.vectorScalarProduct(vector1, vector2);
-    const expectedResult = -124;
+    const expectedResult = -102;
     expect(result).toBe(expectedResult);
 });
 
 test('testVector4fScalarProduct', () => {
     const vector1 = new Vector4f(1, 2, 3, 4);
-    const vector2 = new Vector4f(1, 2, 3, 4);
+    const vector2 = new Vector4f(2, 3, 4, 5);
     const result = LinearMath.vectorScalarProduct(vector1, vector2);
-    const expectedResult = 30;
+    const expectedResult = 40;
     expect(result).toBe(expectedResult);
 });
 
 test('testVectorScalarProductException', () => {
-    const vector1 = new Vector2f(10, 2);
-    const vector2 = new Vector3f(4, -50, -8);
+    const vector1 = new Vector2f(5, 7);
+    const vector2 = new Vector3f(2, -15, -3);
     expect(() => {
         LinearMath.vectorScalarProduct(vector1, vector2);
     }).toThrow(new LinearMathException("Error in the Math library with error: Vectors of different spaces"));
 });
 
 test('testVectorProduct', () => {
-    const vector1 = new Vector3f(5, 9, 12);
-    const vector2 = new Vector3f(14, 5.6, 7.7);
+    const vector1 = new Vector3f(2, 3, 4);
+    const vector2 = new Vector3f(5, 6, 7);
     const result = LinearMath.vectorProduct(vector1, vector2);
-    const expectedResult = new Vector3f(2.1, 129.5, -98);
+    const expectedResult = new Vector3f(-3, 6, -3);
     expect(result.equals(expectedResult)).toBe(true);
 });
 
@@ -219,15 +219,15 @@ test('testMatrix3dPlus', () => {
         [7, 8, 9]
     ]);
     const matrix2 = new Matrix3d([
-        [9, 8, 7],
+        [3, 2, 1],
         [6, 5, 4],
-        [3, 2, 1]
+        [9, 8, 7]
     ]);
     const result = LinearMath.matrixPlus(matrix1, matrix2);
     const expectedResult = new Matrix3d([
+        [4, 4, 4],
         [10, 10, 10],
-        [10, 10, 10],
-        [10, 10, 10]
+        [16, 16, 16]
     ]);
     expect(result.equals(expectedResult)).toBe(true);
 });
@@ -240,17 +240,17 @@ test('testMatrix4dPlus', () => {
         [13, 14, 15, 16]
     ]);
     const matrix2 = new Matrix4d([
-        [5.5, 5.5, 5.5, 5.5],
-        [5.5, 0, 5.5, 5.5],
-        [5.5, 5.5, 5.5, 5.5],
-        [5.5, 5.5, 5.5, 5.5]
+        [2, 3, 4, 5],
+        [6, 7, 8, 9],
+        [10, 11, 12, 13],
+        [14, 15, 16, 17]
     ]);
     const result = LinearMath.matrixPlus(matrix1, matrix2);
     const expectedResult = new Matrix4d([
-        [6.5, 7.5, 8.5, 9.5],
-        [10.5, 6, 12.5, 13.5],
-        [14.5, 15.5, 16.5, 17.5],
-        [18.5, 19.5, 20.5, 21.5]
+        [3, 5, 7, 9],
+        [11, 13, 15, 17],
+        [19, 21, 23, 25],
+        [27, 29, 31, 33]
     ]);
     expect(result.equals(expectedResult)).toBe(true);
 });
@@ -279,15 +279,15 @@ test('testMatrix3dMinus', () => {
         [7, 8, 9]
     ]);
     const matrix2 = new Matrix3d([
-        [9, 8, 7],
+        [3, 2, 1],
         [6, 5, 4],
-        [3, 2, 1]
+        [9, 8, 7]
     ]);
     const result = LinearMath.matrixMinus(matrix1, matrix2);
     const expectedResult = new Matrix3d([
-        [-8, -6, -4],
         [-2, 0, 2],
-        [4, 6, 8]
+        [-2, 0, 2],
+        [-2, 0, 2]
     ]);
     expect(result.equals(expectedResult)).toBe(true);
 });
@@ -300,17 +300,17 @@ test('testMatrix4dMinus', () => {
         [13, 14, 15, 16]
     ]);
     const matrix2 = new Matrix4d([
-        [5.5, 5.5, 5.5, 5.5],
-        [5.5, 0, 5.5, 5.5],
-        [5.5, 5.5, 5.5, 5.5],
-        [5.5, 5.5, 5.5, 5.5]
+        [2, 3, 4, 5],
+        [6, 7, 8, 9],
+        [10, 11, 12, 13],
+        [14, 15, 16, 17]
     ]);
     const result = LinearMath.matrixMinus(matrix1, matrix2);
     const expectedResult = new Matrix4d([
-        [-4.5, -3.5, -2.5, -1.5],
-        [-0.5, 6, 1.5, 2.5],
-        [3.5, 4.5, 5.5, 6.5],
-        [7.5, 8.5, 9.5, 10.5]
+        [-1, -1, -1, -1],
+        [-1, -1, -1, -1],
+        [-1, -1, -1, -1],
+        [-1, -1, -1, -1]
     ]);
     expect(result.equals(expectedResult)).toBe(true);
 });
@@ -360,10 +360,10 @@ test('testMatrix4dMultiplication', () => {
         [13, 14, 15, 16]
     ]);
     const matrix2 = new Matrix4d([
-        [5.5, 5.5, 5.5, 5.5],
-        [5.5, 0, 5.5, 5.5],
-        [5.5, 5.5, 5.5, 5.5],
-        [5.5, 5.5, 5.5, 5.5]
+        [5, 5, 5, 5],
+        [5, 0, 5, 5],
+        [5, 5, 5, 5],
+        [5, 5, 5, 5]
     ]);
     const result = LinearMath.matrixMultiplication(matrix1, matrix2);
     const expectedResult = new Matrix4d([
@@ -448,9 +448,9 @@ test('testMatrixTranspose', () => {
 test('testGetUnitMatrix3d', () => {
     const result = LinearMath.getUnitMatrix3d();
     const expectedResult = new Matrix3d([
-        [1, 1, 1],
-        [1, 1, 1],
-        [1, 1, 1]
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1]
     ]);
     expect(result.equals(expectedResult)).toBe(true);
 });
